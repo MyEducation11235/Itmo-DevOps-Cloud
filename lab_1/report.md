@@ -154,7 +154,7 @@ server {
 
 После этого сохраняем файл `nginx.conf` и обновляем `nginx` командой:
 ```bash
-Nginx -s reload
+./nginx -s reload
 ```
 
 ## Настройка виртуальных хостов
