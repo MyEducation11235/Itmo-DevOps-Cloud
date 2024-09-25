@@ -188,6 +188,6 @@ server {
 Не стоит паникавать, задание было сделано верно, однако, конечно, браузеру не очень будет нравится наш тип сертификата, но это уже другая история...
 
 ## Ресурсы
-[![maketecheasier](https://www.maketecheasier.com/install-nginx-server-windows/)]
-[![serveradmin](https://serveradmin.ru/ustanovka-i-nastrojka-nginx/)]
+[maketecheasier](https://www.maketecheasier.com/install-nginx-server-windows/)]
+[serveradmin](https://serveradmin.ru/ustanovka-i-nastrojka-nginx/)]
 
