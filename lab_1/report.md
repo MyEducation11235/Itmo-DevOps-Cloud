@@ -53,7 +53,7 @@ openssl genrsa -out server.key 2048
 
 Однако у меня вышла следующая ошибка:
 
-[-фотка ошибки-](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/1%20(3).png)
+![App Screenshot](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/1%20(3).png)
 
 Чтобы решить её, необходимо добавить путь к bin-файлу `C:\Program Files\OpenSSL-Win64\bin` в переменную системы Path, так как иначе компьютер просто не понимает, что это такая за команда openssl 😢. Делаем это следующим образом (существует много путей, но я покажу, как это можно сделать на моей системе):
 1. Переходим в Пуск
@@ -64,7 +64,7 @@ openssl genrsa -out server.key 2048
 
 Далее всё сохраняем. У вас должно получиться как-то так:
 
-[-- фотка path переменной --](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/3.png)
+![App Screenshot](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/3.png)
 
 Повторяем снова команду 
 ```bash
@@ -80,14 +80,14 @@ openssl req -new -key server.key -out server.csr
 
 Заполняем информацию, вот пример, как заполнили мы:
 
-[--фотка заполненых--](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/1%20(4).png)
+![App Screenshot](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/1%20(4).png)
 
 Генерируем самоподписанный сертификат:
 ```bash
 openssl req -new -x509 -days 365 -key server.key -out server.crt
 ```
 
-[--картинка сгенерированного сартификата---](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/1%20(5).png)
+![App Screenshot](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/1%20(5).png)
 
 ## Загрузка проектов для проверки
 
@@ -173,17 +173,17 @@ Nginx -s reload
 
 К примеру, вводим `http://site1` и удостоверяемся в корректной работе переадресации на HTTPS и правильности применения alias. То есть, файл index.html должен загружаться из папки site1, как указано в конфигурационном файле:
 
-[фото сайта 1](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/1%20(8).png)
+![App Screenshot](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/1%20(8).png)
 
 Мы видим, что переадресация успешно сработала, и открылся корректный HTML-файл, что подтверждает правильность настройки блока для site1.
 
 Далее, пробуем ввести site2 в адресную строку:
 
-[фото сайта 1](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/1%20(2).png)
+![App Screenshot](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/1%20(2).png)
 
 Ура! Оба сайта работают именно так, как должны, однако мы видим, что браузер жалуется на наш SSL-сертификат
 
-[ржака](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/el-risitas-juan-joya-borja.gif)
+![App Screenshot](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/el-risitas-juan-joya-borja.gif)
 
 Не стоит паникавать, задание было сделано верно, однако, конечно, браузеру не очень будет нравится наш тип сертификата, но это уже другая история...
 
