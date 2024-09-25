@@ -191,3 +191,4 @@ server {
 [maketecheasier](https://www.maketecheasier.com/install-nginx-server-windows/)
 [serveradmin](https://serveradmin.ru/ustanovka-i-nastrojka-nginx/)
 
+P.S. Следующую лабу будем делать на линуксе, это были 10 кругов ада...
