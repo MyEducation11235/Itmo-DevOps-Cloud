@@ -49,4 +49,7 @@
 5. **Отсутствие обработки ошибок**: Although not explicitly shown, it's recommended to add error handling mechanisms, such as try-catch blocks, to handle errors and exceptions.
 
 6. **Использование не безопасного протокола переноса файлов**: Команда scp была заменена на sftp, который является более безопасным протоколом передачи файлов.
+
+### Вот так будет выглядеть обновленный CI/CD:
+
 ![3](png2.png)
