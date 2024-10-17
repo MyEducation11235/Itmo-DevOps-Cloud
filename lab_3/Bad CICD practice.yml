@@ -1,0 +1,33 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  MY_VAR: "Bad CI/CD practice"
+
+build:
+  stage: build
+  script:
+    - echo "Building the project for you..."
+    - sleep 10
+    - echo "I built it!"
+  artifacts:
+    paths:
+      - build_output/
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying to production..."
+    - ssh root@my_server "rm -rf /var/www/html/*"
+    - scp build_output/* root@my_server:/var/www/html/
+    - echo "Deployment is done!"
+  only:
+    - main
+test: 
+  stage: test
+  skript:
+    - echo "Running tests..."
+    - sleep 5
+    - echo "Tests are done!"
+  when: manual
