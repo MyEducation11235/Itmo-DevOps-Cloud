@@ -1,19 +1,26 @@
 stages:
   - build
+  - test
   - deploy
 
 variables:
   MY_VAR: "Bad CI/CD practice"
 
 build:
-  stage: build
-  script:
+  stage: build script:
     - echo "Building the project for you..."
     - sleep 10
     - echo "I built it!"
   artifacts:
     paths:
       - build_output/
+
+test: 
+  stage: test script:  # Исправлено с 'skript' на 'script'
+    - echo "Running tests..."
+    - sleep 5
+    - echo "Tests are done!"
+  when: manual  # Вы можете запускать этот этап вручную
 
 deploy:
   stage: deploy
@@ -24,10 +31,3 @@ deploy:
     - echo "Deployment is done!"
   only:
     - main
-test: 
-  stage: test
-  skript:
-    - echo "Running tests..."
-    - sleep 5
-    - echo "Tests are done!"
-  when: manual
