@@ -8,9 +8,10 @@ WORKDIR /usr/src/app/
 EXPOSE 80
 
 # Копируем только нужные файлы сайта в директорию Nginx
-COPY site /usr/share/nginx/html
+ARG SITE_PATH
+COPY $SITE_PATH /usr/share/nginx/html
 
-# Используем не root пользователя для безопасности 
+# Используем не root пользователя для безопасности (не требуется в nginx образе)
 # RUN adduser -D myuser && chown -R myuser ./
 # USER myuser
 
