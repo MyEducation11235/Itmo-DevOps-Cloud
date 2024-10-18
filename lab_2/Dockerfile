@@ -11,8 +11,8 @@ EXPOSE 80
 COPY site /usr/share/nginx/html
 
 # Используем не root пользователя для безопасности 
-RUN adduser -D myuser && chown -R myuser /myapp-data
-USER myuser
+# RUN adduser -D myuser && chown -R myuser ./
+# USER myuser
 
 # Запускаем Nginx
 CMD ["nginx", "-g", "daemon off;"]
