@@ -1,0 +1,20 @@
+# Используем не оптимальный образ Nginx последней версии
+FROM nginx:latest
+
+# Используем ADD вместо COPY без необходимости
+ADD site /usr/share/nginx/html
+
+# Скачиваем что-то не используемое 
+RUN apt-get update && apt-get install -y bash
+
+# Устанавливаем непонятную рабочую директорию
+WORKDIR /var/жираф
+
+# Открываем порт 80
+EXPOSE 80
+
+# Запускаемся от root-пользователя
+USER root
+
+# Запускаем Nginx
+CMD ["nginx", "-g", "daemon off;"]
