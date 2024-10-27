@@ -1,4 +1,4 @@
-**Лабораторная работа №1 со звёздочкой**
+# Лабораторная работа №1 со звёздочкой
 
 **Выполнили:** Недиков Михаил, Проскуряков Роман и Зюзин Владислав
 
@@ -117,78 +117,79 @@ http {
 ```
 
 Однако, я не могу запустить его на своей системе, поэтому изменил пути до сертификатов, папок хранения изображений и ассетов:
+```nginx
+
+#user  nobody;  
+worker_processes  1;
+
+#error_log  logs/error.log;  
+#error_log  logs/error.log  notice;  
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+events {  
+    worker_connections  1024;  
+}
+
+http {
+
+    server {  
+        listen 80;  
+        server_name project1.com project2.com;
+
+        location / {  
+            return 301 https://$host$request_uri;  
+        }  
+    }
+
+    server {  
+        listen 443 ssl;  
+        server_name project1.com;
+
+        ssl_certificate "C:/Users/nedik/Downloads/server.crt";  
+        ssl_certificate_key "C:/Users/nedik/Downloads/server.key";
+
+        root C:/Users/nedik/Downloads/testSite/;  
+        index index.html;
+
+        location / {  
+            try_files $uri $uri/ =404;  
+        }
+
+        location /images/ {  
+            alias C:/Users/nedik/Downloads/testSite/images/;  
+        }
+
+        location /assets/ {  
+            alias C:/Users/nedik/Downloads/testSite/assets/;  
+        }  
+    }
+
+    server {  
+        listen 443 ssl;  
+        server_name project2.com;
+
+        ssl_certificate "C:/Users/nedik/Downloads/server.crt";  
+        ssl_certificate_key "C:/Users/nedik/Downloads/server.key";
+
+        root C:/Users/nedik/Downloads/testSite2/;  
+        index index.html;
+
+        location / {  
+            try_files $uri $uri/ =404;  
+        }
+
+        location /images/ {  
+            alias C:/Users/nedik/Downloads/testSite2/images/;  
+        }
+
+        location /assets/ {  
+            alias C:/Users/nedik/Downloads/testSite2/assets/;  
+        }  
+    }  
+}
 ```
-
-**#user  nobody;**  
-**worker_processes  1;**
-
-**#error_log  logs/error.log;**  
-**#error_log  logs/error.log  notice;**  
-**#error_log  logs/error.log  info;**
-
-**#pid        logs/nginx.pid;**
-
-**events {**  
-**    worker_connections  1024;**  
-**}**
-
-**http {**
-
-**    server {**  
-**        listen 80;**  
-**        server_name project1.com project2.com;**
-
-**        location / {**  
-**            return 301 https://$host$request_uri;**  
-**        }**  
-**    }**
-
-**    server {**  
-**        listen 443 ssl;**  
-**        server_name project1.com;**
-
-**        ssl_certificate "C:/Users/nedik/Downloads/server.crt";**  
-**        ssl_certificate_key "C:/Users/nedik/Downloads/server.key";**
-
-**        root C:/Users/nedik/Downloads/testSite/;**  
-**        index index.html;**
-
-**        location / {**  
-**            try_files $uri $uri/ =404;**  
-**        }**
-
-**        location /images/ {**  
-**            alias C:/Users/nedik/Downloads/testSite/images/;**  
-**        }**
-
-**        location /assets/ {**  
-**            alias C:/Users/nedik/Downloads/testSite/assets/;**  
-**        }**  
-**    }**
-
-**    server {**  
-**        listen 443 ssl;**  
-**        server_name project2.com;**
-
-**        ssl_certificate "C:/Users/nedik/Downloads/server.crt";**  
-**        ssl_certificate_key "C:/Users/nedik/Downloads/server.key";**
-
-**        root C:/Users/nedik/Downloads/testSite2/;**  
-**        index index.html;**
-
-**        location / {**  
-**            try_files $uri $uri/ =404;**  
-**        }**
-
-**        location /images/ {**  
-**            alias C:/Users/nedik/Downloads/testSite2/images/;**  
-**        }**
-
-**        location /assets/ {**  
-**            alias C:/Users/nedik/Downloads/testSite2/assets/;**  
-**        }**  
-**    }**  
-**}**
 
 **Данные изменения никак не влияют на поиск уязвимостей. Однако сервер теперь успешно работает:**
 
