@@ -1,4 +1,3 @@
-```markdown
 **Лабораторная работа №1 со звёздочкой**
 
 **Выполнили:** Недиков Михаил, Проскуряков Роман и Зюзин Владислав
@@ -305,4 +304,3 @@ client_max_body_size 50M;
 **Ресурсы**  
 - [Habr: Тестирование безопасности](https://habr.com/ru/articles/745718/)
 - [NGINX: Security Advisories](https://nginx.org/en/security_advisories.html)
-```
