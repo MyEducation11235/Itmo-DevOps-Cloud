@@ -36,7 +36,7 @@
 
 Также мы спросили разрешение и удостоверились, что никто пока что не "ломал" конфиг владельца лабораторной работы:
 
-*—скрин—*
+[![App Screenshot](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/2.png)](https://github.com/MyEducation11235/Itmo-DevOps-Cloud/blob/main/lab_1_hard/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202024-10-27%20121930.png)
 
 ---
 
