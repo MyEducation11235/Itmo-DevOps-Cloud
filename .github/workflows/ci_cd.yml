@@ -1,4 +1,4 @@
-name: Bad CI/CD Pipeline by Vezdecpiashie
+name: Bad CI/CD
 
 on:
   push:
@@ -6,29 +6,21 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      
-      - name: Run build without cache
-        run: |
-          echo "Starting build"
-          npm install
-          npm run build
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Use hardcoded secrets
-        env:
-          API_KEY: "1234567890abcdef"
-        run: echo "Using hardcoded API key:$API_KEY"
-      
-      - name: Run multiple commands in one step
+      - name: Install deps
+        run: npm install
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
         run: |
-          echo "Deploying..."
-          npm run test
-          npm run deploy
-          
-      - name: Missing notifications
-        run: echo "Pipeline completed"
+           rsync -avz --delete ./dist/ user@server_ip:/var/www/html/
