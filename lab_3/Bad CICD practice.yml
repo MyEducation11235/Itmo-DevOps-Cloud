@@ -1,33 +1,23 @@
-stages:
-  - build
-  - deploy
+name: CI/CD Pipeline
 
-variables:
-  MY_VAR: "Bad CI/CD practice"
+on: push
 
-build:
-  stage: build
-  script:
-    - echo "Building the project for you..."
-    - sleep 10
-    - echo "I built it!"
-  artifacts:
-    paths:
-      - build_output/
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-deploy:
-  stage: deploy
-  script:
-    - echo "Deploying to production..."
-    - ssh root@my_server "rm -rf /var/www/html/*"
-    - scp build_output/* root@my_server:/var/www/html/
-    - echo "Deployment is done!"
-  only:
-    - main
-test: 
-  stage: test
-  skript:
-    - echo "Running tests..."
-    - sleep 5
-    - echo "Tests are done!"
-  when: manual
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m unittest discover
+
+      - name: Build Docker image
+        run: docker build -t myapp .
+
+      - name: Push Docker image
+        run: docker push myapp
