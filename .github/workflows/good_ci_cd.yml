@@ -23,5 +23,5 @@ jobs:
 
       - name: Deploy
         run: |
-           echo "Deploying..."
+           echo "Deploying it..."
 
