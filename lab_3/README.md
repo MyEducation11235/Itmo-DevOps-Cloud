@@ -24,6 +24,24 @@
 
 Рассмотрим файл CI/CD с "**плохими практиками**":
 
+Для начала работы я создал небольшой проект, который обозвал `package.json`, который имееет следующий вид:
+``
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "build": "echo \"Building...\"",
+    "deploy": "echo \"Deploying...\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+``
+
 ![2](png1.png)
 
 ### Для того, чтобы было  более понятно, что не так, распишем следующие неудобства:
