@@ -23,4 +23,4 @@ jobs:
 
       - name: Deploy
         run: |
-           rsync -avz --delete ./dist/ user@server_ip:/var/www/html/
+           echo "Deploying..."
