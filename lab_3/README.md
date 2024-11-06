@@ -72,7 +72,7 @@ jobs:
         run: |
            echo "Deploying..."
 ```
-![1](Succesfull success Bad practice.png)
+![1](Succesfull_success_Bad_practice.png)
 
 ### Для того, чтобы было  более понятно, что не так, распишем следующие неудобства:
 
