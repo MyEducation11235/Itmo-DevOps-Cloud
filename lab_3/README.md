@@ -45,10 +45,33 @@
 Его следует добавить в корень репозитория, т.е. в ветку `main`, чтобы в Githab Actions у нас всё заработало.
 После этого весёлого процесса, созаём CICD файл, у меня он выглядит слудеющим образом:
 ```
+name: Bad CI/CD
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install deps
+        run: npm install
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        run: |
+           echo "Deploying..."
 ```
-
-![2](png1.png)
 
 ### Для того, чтобы было  более понятно, что не так, распишем следующие неудобства:
 
