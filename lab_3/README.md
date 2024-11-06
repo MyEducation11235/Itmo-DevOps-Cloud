@@ -103,7 +103,7 @@ jobs:
 
 ### Вот так будет выглядеть обновленный CI/CD:
 
-![3](png2.png)
+![3](Successfull_succes_good_practice.png)
 
 ## Заключение
 1. "Плохой" CI/CD файл мы написан 6 bad practices объяснены
