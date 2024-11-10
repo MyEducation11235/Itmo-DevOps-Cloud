@@ -1,26 +1,36 @@
-name: Bad CI/CD
+name: Good CI/CD
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  build-and-test:
+    runs-on: ubuntu-20.04  # Ограничение версии ОС
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install deps
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Указание версии Node.js
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
         run: npm install
 
-      - name: Test
+      - name: Run tests
         run: npm run test
 
-      - name: Build
+      - name: Build project
         run: npm run build
-
-      - name: Deploy
-        run: |
-           echo "Deploying..."
