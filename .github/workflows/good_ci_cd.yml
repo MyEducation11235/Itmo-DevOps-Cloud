@@ -1,4 +1,4 @@
-name: Good CI/CD
+name: Bad CI/CD
 
 on:
   pull_request:
