@@ -1,36 +1,58 @@
-name: Good CI/CD
+name: Bad Practices pipeline
 
-on:
-  pull_request:
-    branches:
-      - main
+on: workflow_dispatch
 
 jobs:
-  build-and-test:
-    runs-on: ubuntu-20.04  # Ограничение версии ОС
-
+  lint:
+    runs-on: ubuntu-20.04
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'  # Указание версии Node.js
-
-      - name: Cache npm dependencies
+      - name: Cache deps
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-npm-
+      - name: Install deps
+        run: npm ci
+      - name: Lint
+        run: npm run lint
 
-      - name: Install dependencies
-        run: npm install
+  test:
+    runs-on: ubuntu-20.04
+    needs: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Install deps
+        run: npm ci
+      - name: Tests
+        run: npm test
+        continue-on-error: false
 
-      - name: Run tests
-        run: npm run test
-
-      - name: Build project
+  build:
+    runs-on: ubuntu-20.04
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Install deps
+        run: npm ci
+      - name: Build
         run: npm run build
