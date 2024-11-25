@@ -1,15 +1,15 @@
 {
-  "name": "my-project",
+  "name": "pipeline-practices",
   "version": "1.0.0",
-  "description": "",
+  "description": "A project with scripts simulating pipeline activities for demonstration purposes.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Running tests...\"",
-    "build": "echo \"Building project...\"",
-    "deploy": "echo \"Deploying project...\""
+    "lint": "echo 'Running linter... (this is just a simulation)'",
+    "test": "echo 'Running tests... (this is just a simulation)'",
+    "build": "mkdir -p build && echo 'Build completed' > build/output.txt"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["pipeline", "example", "practices"],
+  "author": "Vsedespiashie_team",
   "license": "ISC"
 }
 
