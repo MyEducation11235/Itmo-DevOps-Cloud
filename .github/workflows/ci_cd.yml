@@ -1,26 +1,58 @@
-name: Bad CI/CD
+name: Bad Practices pipeline
 
-on:
-  push:
-    branches:
-      - main
+on: workflow_dispatch
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  lint:
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Install deps
-        run: npm install
+        run: npm ci
+      - name: Lint
+        run: npm run lint
 
-      - name: Test
-        run: npm run test
+  test:
+    runs-on: ubuntu-20.04
+    needs: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Install deps
+        run: npm ci
+      - name: Tests
+        run: npm test
+        continue-on-error: false
 
+  build:
+    runs-on: ubuntu-20.04
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Install deps
+        run: npm ci
       - name: Build
         run: npm run build
-
-      - name: Deploy
-        run: |
-           echo "Deploying..."
