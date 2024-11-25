@@ -1,4 +1,4 @@
-name: Bad Practices pipeline
+name: Good Practices 
 
 on: 
   workflow_dispatch:
