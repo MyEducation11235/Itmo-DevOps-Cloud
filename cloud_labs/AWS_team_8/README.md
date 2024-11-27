@@ -24,11 +24,11 @@
    
 | <!-- -->      | <!-- -->        | 
 |:-------------:|:---------------|
-| **IT Tower**       | Группа, ответственная за управление инфраструктурой сервиса, его поддержку и характеристику.  Примеры: Storage, Machine Learning, Database, Security, Analytics, Compute| 
-| **Service Family**          | Группа сервисов, которая выполняет конкретную инфраструктурную задачу и связана с конкретным приложением. Примеры: Application services, Мanagement or provisioning,  GPU-powered acceleration, In-memory caching service, Threat detection service и др| 
-| **Service Type**          | Тип сервиса внутри определённой группы сервисов. Примеры: Elastic File System, Elastic Inference, ElastiCache, GuardDuty, Kinesis и др.| 
-| **Service Sub Type**  |Уточнённый подтип сервиса с определённой функцией. Примеры: Fees, Acceleration, Cache Nodes, Security & Compliance и др.|
-|**Service Usage Type** |Тип использования сервиса с учетом подтипа(определяет какой тип запросов может выполнять пользователь с помощью конкретного сервиса). Примеры: Standart Timed storage, Infrequent Access storage, Tax и др.|
+| **IT Tower**       | Группа, ответственная за управление инфраструктурой сервиса, его поддержку и характеристики. Примеры: Хранение данных, Машинное обучение, Базы данных, Безопасность, Аналитика, Вычисления.| 
+| **Service Family**          | Группа сервисов, выполняющих конкретные инфраструктурные задачи и связанных с определённым приложением. Примеры: Сервисы приложений, Управление или предоставление ресурсов, Ускорение на базе GPU, Сервис кэширования в памяти, Сервис обнаружения угроз и др.| 
+| **Service Type**          | Категория сервиса в рамках определённой группы сервисов. Примеры: Elastic File System, Elastic Inference, ElastiCache, GuardDuty, Kinesis и др.| 
+| **Service Sub Type**  |Более детализированный подтип сервиса с конкретной функцией. Примеры: Плата, Ускорение, Узлы кэша, Безопасность и соответствие и др.|
+|**Service Usage Type** |Тип использования сервиса с учётом подтипа (определяет, какие запросы может выполнять пользователь с помощью данного сервиса). Примеры: Стандартное временное хранилище, Хранилище с редким доступом, Налоги и др.|
 ---
 
 3.	Далее мы выделили сервисы в соответствии с исходными данными. Нами были выделены: Amazon Elastic File System, Amazon Elastic Inference, Amazon ElastiCache, Amazon GuardDuty, Amazon Kinesis, Amazon Kendra, Amazon Lex, Amazon Lightsail, Amazon Redshift, Amazon Route 53. 
