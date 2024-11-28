@@ -1,15 +1,14 @@
 {
-  "name": "pipeline-practices",
+  "name": "your-project-name",
   "version": "1.0.0",
-  "description": "A project with scripts simulating pipeline activities for demonstration purposes.",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "echo 'Running linter... (this is just a simulation)'",
-    "test": "echo 'Running tests... (this is just a simulation)'",
-    "build": "mkdir -p build && echo 'Build completed' > build/output.txt"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "build": "echo \"Building...\"",
+    "deploy": "echo \"Deploying...\""
   },
-  "keywords": ["pipeline", "example", "practices"],
-  "author": "Vsedespiashie_team",
+  "keywords": [],
+  "author": "",
   "license": "ISC"
 }
-
