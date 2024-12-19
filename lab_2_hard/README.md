@@ -25,4 +25,4 @@ chmod +x ~/.docker/cli-plugins/docker-compose
 ```
 На рисунке ниже представлен код и его вывод, а так же проверка установки Docker compose
 
-![1](https://github.com/user-attachments/assets/09ca9db6-5c05-48cb-9517-abd4eeebbb90)
+![1](1.png)
