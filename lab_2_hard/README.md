@@ -38,3 +38,31 @@ chmod +x ~/.docker/cli-plugins/docker-compose
 Docker Compose — это инструмент, предназначенный для удобного управления контейнерами Docker. Он особенно полезен для работы со средами, в которых задействовано несколько контейнеров, но также подходит для управления отдельными контейнерами. С его помощью можно изолировать окружения, одновременно запускать, пересобирать и останавливать контейнеры, отслеживать их состояние и пользоваться множеством других полезных функций, упрощающих работу с контейнерами.
 
 ### Как с ним работать?
+```
+version: '3.8'
+
+services:
+  container_1:
+    image: ubuntu:22.04
+    privileged: false
+    volumes:
+      - ./script1:/container_folder:ro
+    command: >
+      /bin/bash -c "
+      apt-get update && 
+      apt-get install -y bash iputils-ping &&
+      bash /container_folder/MyScript1.bash"
+      echo "I'm bad container_1"
+    
+  container_2:
+    image: ubuntu:22.04
+    privileged: false
+    volumes:
+      - ./script2:/container_folder:ro
+    command: >
+      /bin/bash -c "
+      apt-get update && 
+      apt-get install -y bash iputils-ping &&
+      bash /container_folder/MyScript2.bash"
+      echo "I'm bad container_2"
+```
