@@ -79,20 +79,20 @@ ping -c 2 8.8.8.8
 version: '2'
 services:
   My_cont_1:
-    image: ubuntu:latest  # Используем тег :latest, что является плохой практикой
-    privileged: true  # Запуск контейнера с привилегиями (плохая практика)
+    image: ubuntu:latest  
+    privileged: true  
     volumes:
-      - ./script1:/container_folder  # Монтируем локальный файл без правильных прав доступа
+      - ./script1:/container_folder  
     command: >
       /bin/bash -c
       "apt-get update && apt-get install -y bash &&
       apt-get install -y iputils-ping && bash /container_folder/script1.bash"
 
   My_cont_2:
-    image: ubuntu:latest  # Используем тег :latest
-    privileged: true  # Запуск контейнера с привилегиями
+    image: ubuntu:latest  
+    privileged: true  
     volumes:
-      - ./script2:/container_folder  # Монтируем локальный файл без правильных прав доступа
+      - ./script2:/container_folder  
     command: >
       /bin/bash -c
       "apt-get update && apt-get install -y bash &&
@@ -171,20 +171,20 @@ sudo docker compose up
 version: '2'
 services:
   My_cont_1:
-    image: ubuntu:22.04  # Используем фиксированную версию Ubuntu, а не :latest
-    privileged: false  # Запуск контейнера без привилегий
+    image: ubuntu:22.04  
+    privileged: false  
     volumes:
-      - ./script1:/container_folder:ro  # Монтируем локальный файл только для чтения
+      - ./script1:/container_folder:ro  
     command: >
       /bin/bash -c
       "apt-get update && apt-get install -y bash &&
       apt-get install -y iputils-ping && bash /container_folder/script1.bash"
 
   My_cont_2:
-    image: ubuntu:22.04  # Используем фиксированную версию Ubuntu
-    privileged: false  # Запуск контейнера без привилегий
+    image: ubuntu:22.04  
+    privileged: false  
     volumes:
-      - ./script2:/container_folder:ro  # Монтируем локальный файл только для чтения
+      - ./script2:/container_folder:ro  
     command: >
       /bin/bash -c
       "apt-get update && apt-get install -y bash &&
